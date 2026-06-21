@@ -6,7 +6,6 @@ const lovePage = document.getElementById("lovePage");
 
 // Музыка
 const music = document.getElementById("music");
-const musicBtn = document.getElementById("musicBtn");
 
 // Галерея
 const slides = document.querySelectorAll(".slide");
@@ -17,7 +16,7 @@ const phraseBtn = document.getElementById("phraseBtn");
 
 // Конверт
 const envelope = document.querySelector(".envelope");
-const letter = document.querySelector(".letter");
+const letter = document.getElementById("letter");
 
 // Просмотр фото
 const photoViewer = document.getElementById("photoViewer");
@@ -48,41 +47,48 @@ yesBtn.addEventListener("click", () => {
     welcome.style.display = "none";
     lovePage.style.display = "block";
     createHearts();
+
+    // Автоматически запускаем музыку
     music.play().catch(() => {});
 });
 
-// ===== ФРАЗЫ =====
+// ===== ФРАЗЫ (ПО ПОРЯДКУ) =====
 const phrases = [
     "Ты самое лучшее, что со мной случилось ❤️",
-    "Люблю твою улыбку 💕",
-    "Спасибо, что ты есть ❤️",
-    "С тобой каждый день счастливый 🌹",
-    "Ты моя любимая девочка 💖",
-    "Я люблю тебя всем сердцем ❤️",
-    "Ты мой самый родной человек 🌸",
-    "Каждый день с тобой — подарок 🎁",
-    "Ты делаешь меня счастливым 😊",
-    "Я безумно тебя люблю 💋"
+    "Люблю твою улыбку больше всего на свете 💕",
+    "Спасибо, что ты есть в моей жизни ❤️",
+    "С тобой каждый день становится счастливым 🌹",
+    "Ты моя самая любимая девочка на свете 💖",
+    "Я люблю тебя всем сердцем и всей душой ❤️",
+    "Ты мой самый родной и близкий человек 🌸",
+    "Каждый день с тобой — это настоящий подарок 🎁",
+    "Ты делаешь меня самым счастливым человеком 😊",
+    "Я безумно сильно тебя люблю 💋",
+    "Ты — моё вдохновение и моя радость ✨",
+    "С тобой я хочу прожить всю жизнь 💍",
+    "Твоя улыбка — это моё солнце ☀️",
+    "Ты — моя самая большая ценность 💎",
+    "Я выбираю тебя каждый день и навсегда ❤️"
 ];
 
+let phraseIndex = 0;
+
 phraseBtn.addEventListener("click", () => {
-    const random = Math.floor(Math.random() * phrases.length);
-    phraseDisplay.textContent = phrases[random];
+    phraseDisplay.textContent = phrases[phraseIndex];
+    phraseIndex = (phraseIndex + 1) % phrases.length;
 });
 
-// ===== ГАЛЕРЕЯ (только для телефона) =====
+// ===== ГАЛЕРЕЯ (ТОЛЬКО ДЛЯ ТЕЛЕФОНА) =====
 let currentSlide = 0;
 let slideInterval;
 
 function startSlideshow() {
     if (window.innerWidth <= 768) {
-        // Показываем только первый слайд
         slides.forEach((slide, index) => {
             slide.classList.toggle("active", index === 0);
         });
         currentSlide = 0;
 
-        // Запускаем автопереключение
         clearInterval(slideInterval);
         slideInterval = setInterval(() => {
             slides[currentSlide].classList.remove("active");
@@ -91,12 +97,10 @@ function startSlideshow() {
         }, 4000);
     } else {
         clearInterval(slideInterval);
-        // На ПК показываем все фото
         slides.forEach(slide => slide.classList.add("active"));
     }
 }
 
-// Запускаем при загрузке и при изменении размера окна
 startSlideshow();
 window.addEventListener("resize", startSlideshow);
 
@@ -117,11 +121,6 @@ closePhoto.addEventListener("click", () => {
 // ===== КОНВЕРТ =====
 envelope.addEventListener("click", () => {
     letter.style.display = letter.style.display === "block" ? "none" : "block";
-});
-
-// ===== МУЗЫКА =====
-musicBtn.addEventListener("click", () => {
-    music.play();
 });
 
 // ===== СЧЕТЧИК ДНЕЙ =====
@@ -220,7 +219,7 @@ foreverBtn.addEventListener("click", () => {
     }, 1000);
 });
 
-// ===== СВАЙПЫ ДЛЯ ГАЛЕРЕИ (телефон) =====
+// ===== СВАЙПЫ ДЛЯ ГАЛЕРЕИ (ТЕЛЕФОН) =====
 let startX = 0;
 const gallery = document.querySelector(".gallery");
 
