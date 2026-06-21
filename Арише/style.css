@@ -91,10 +91,21 @@ button:hover {
     text-shadow: 0 0 20px hotpink;
 }
 
+.daysTogether-wrapper {
+    text-align: center;
+}
+
 .daysTogether {
     text-align: center;
     margin: 20px 0;
     font-size: 1.3rem;
+    color: #4a0024;
+    font-weight: 600;
+    background: rgba(255, 240, 245, 0.5);
+    padding: 10px 20px;
+    border-radius: 60px;
+    display: inline-block;
+    backdrop-filter: blur(5px);
 }
 
 /* ===== ФРАЗЫ ===== */
@@ -120,6 +131,7 @@ button:hover {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-shrink: 0;
 }
 
 .phrase-btn:hover {
@@ -127,12 +139,11 @@ button:hover {
     box-shadow: 0 0 40px hotpink;
 }
 
-/* ===== ИСПРАВЛЕННЫЙ БЛОК ДЛЯ ТЕКСТА ФРАЗ ===== */
 .phrase {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 600;
     padding: 16px 30px;
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 240, 245, 0.85);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-radius: 60px;
@@ -143,21 +154,15 @@ button:hover {
     flex: 1;
     max-width: 550px;
     justify-content: center;
-    color: #4a0024;
-    border: 2px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 4px 25px rgba(255, 105, 180, 0.25);
-    line-height: 1.5;
+    color: #3d001e;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 25px rgba(255, 105, 180, 0.2);
+    line-height: 1.4;
     text-shadow: 0 1px 4px rgba(255, 255, 255, 0.3);
     letter-spacing: 0.3px;
-}
-
-/* Дополнительно: тёмный текст на светлом фоне для читаемости */
-.phrase {
-    background: rgba(255, 240, 245, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    color: #3d001e;
-    border: 2px solid rgba(255, 255, 255, 0.6);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* ===== ГАЛЕРЕЯ ===== */
@@ -165,7 +170,6 @@ button:hover {
     margin: 20px 0 40px;
 }
 
-/* Телефон — карусель */
 @media (max-width: 768px) {
     .gallery {
         position: relative;
@@ -191,9 +195,35 @@ button:hover {
         height: 100%;
         object-fit: cover;
     }
+
+    .phrase {
+        font-size: 1rem;
+        padding: 14px 20px;
+        min-height: 56px;
+        white-space: normal;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .phrase-section {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .phrase-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #foreverBtn {
+        white-space: nowrap;
+        font-size: 1.1rem;
+        padding: 14px 28px;
+        min-width: auto;
+        width: auto;
+    }
 }
 
-/* ПК — сетка одинаковых фото */
 @media (min-width: 769px) {
     .gallery {
         display: grid;
@@ -245,28 +275,30 @@ button:hover {
     width: 90%;
     max-width: 500px;
     margin: 0 auto 30px;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-    padding: 25px;
+    background: rgba(255, 240, 245, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 30px 28px;
     border-radius: 25px;
     display: none;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    box-shadow: 0 8px 30px rgba(255, 105, 180, 0.2);
 }
 
 .letter h2 {
     text-align: center;
     margin-bottom: 20px;
+    color: #3d001e;
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.2rem;
 }
 
 .letter p {
     line-height: 1.8;
-}
-
-/* ===== МУЗЫКА ===== */
-#musicBtn {
-    display: block;
-    margin: 30px auto;
-    background: #ff4da6;
-    color: white;
+    color: #3d001e;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-align: center;
 }
 
 /* ===== НАВСЕГДА ===== */
@@ -280,6 +312,11 @@ button:hover {
     color: #ff4da6;
     box-shadow: 0 0 30px hotpink;
     font-size: 1.2rem;
+    white-space: nowrap;
+    display: inline-block;
+    width: auto;
+    min-width: auto;
+    padding: 16px 40px;
 }
 
 /* ===== ПОЛНОЭКРАННЫЙ ПРОСМОТР ===== */
@@ -416,9 +453,9 @@ button:hover {
     font-size: 1.4rem;
     text-align: center;
     padding: 0 20px;
+    color: #3d001e;
 }
 
-/* ===== БОЛЬШОЕ СЕРДЦЕ (скрыто) ===== */
 .bigHeart {
     display: none;
 }
@@ -449,35 +486,27 @@ button:hover {
         padding: 0 15px;
     }
 
-    .phrase-section {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .phrase {
-        font-size: 1.2rem;
-        font-weight: 600;
-        padding: 14px 20px;
-        min-height: 60px;
-        width: 100%;
-        max-width: 100%;
-        color: #3d001e;
-        background: rgba(255, 240, 245, 0.7);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 2px solid rgba(255, 255, 255, 0.6);
-    }
-
-    .phrase-btn {
-        font-size: 1rem;
-        padding: 12px 28px;
-    }
-
     .daysTogether {
         font-size: 1rem;
+        padding: 8px 16px;
     }
 
     .letter {
         width: 95%;
+        padding: 20px 16px;
+    }
+
+    .letter h2 {
+        font-size: 1.8rem;
+    }
+
+    .letter p {
+        font-size: 1rem;
+    }
+
+    #foreverBtn {
+        font-size: 1.1rem;
+        padding: 14px 28px;
+        white-space: nowrap;
     }
 }
