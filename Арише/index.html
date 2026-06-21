@@ -102,6 +102,10 @@
             text-shadow: 0 0 20px hotpink;
         }
 
+        .daysTogether-wrapper {
+            text-align: center;
+        }
+
         .daysTogether {
             text-align: center;
             margin: 20px 0;
@@ -112,14 +116,7 @@
             padding: 10px 20px;
             border-radius: 60px;
             display: inline-block;
-            margin-left: auto;
-            margin-right: auto;
-            width: auto;
             backdrop-filter: blur(5px);
-        }
-
-        .daysTogether-wrapper {
-            text-align: center;
         }
 
         /* ===== ФРАЗЫ ===== */
@@ -228,6 +225,15 @@
                 width: 100%;
                 justify-content: center;
             }
+
+            /* ===== КНОПКА НАВСЕГДА В ОДНУ СТРОКУ ===== */
+            #foreverBtn {
+                white-space: nowrap;
+                font-size: 1.1rem;
+                padding: 14px 28px;
+                min-width: auto;
+                width: auto;
+            }
         }
 
         @media (min-width: 769px) {
@@ -265,7 +271,7 @@
             }
         }
 
-        /* ===== КОНВЕРТ (ИСПРАВЛЕННЫЙ) ===== */
+        /* ===== КОНВЕРТ ===== */
         .envelope {
             margin: 40px auto 20px;
             width: 100px;
@@ -307,14 +313,6 @@
             text-align: center;
         }
 
-        /* ===== МУЗЫКА ===== */
-        #musicBtn {
-            display: block;
-            margin: 30px auto;
-            background: #ff4da6;
-            color: white;
-        }
-
         /* ===== НАВСЕГДА ===== */
         .forever {
             text-align: center;
@@ -326,6 +324,11 @@
             color: #ff4da6;
             box-shadow: 0 0 30px hotpink;
             font-size: 1.2rem;
+            white-space: nowrap;
+            display: inline-block;
+            width: auto;
+            min-width: auto;
+            padding: 16px 40px;
         }
 
         /* ===== ПОЛНОЭКРАННЫЙ ПРОСМОТР ===== */
@@ -512,6 +515,12 @@
             .letter p {
                 font-size: 1rem;
             }
+
+            #foreverBtn {
+                font-size: 1.1rem;
+                padding: 14px 28px;
+                white-space: nowrap;
+            }
         }
     </style>
 </head>
@@ -575,12 +584,6 @@
             <p>Спасибо, что ты есть. Спасибо за твою улыбку, заботу и за каждый момент рядом. Я люблю тебя всем сердцем ❤️</p>
         </div>
 
-        <!-- Музыка -->
-        <button id="musicBtn">🎵 Наша песня</button>
-        <audio id="music" loop>
-            <source src="music.mp3" type="audio/mp3">
-        </audio>
-
         <!-- Финальный блок -->
         <div class="forever">
             <button id="foreverBtn">Навсегда? 💍</button>
@@ -593,6 +596,11 @@
         <img id="viewerImage">
     </div>
 
+    <!-- Музыка -->
+    <audio id="music" loop>
+        <source src="music.mp3" type="audio/mp3">
+    </audio>
+
     <script>
         // Кнопки
         const yesBtn = document.getElementById("yesBtn");
@@ -602,7 +610,6 @@
 
         // Музыка
         const music = document.getElementById("music");
-        const musicBtn = document.getElementById("musicBtn");
 
         // Галерея
         const slides = document.querySelectorAll(".slide");
@@ -644,6 +651,8 @@
             welcome.style.display = "none";
             lovePage.style.display = "block";
             createHearts();
+
+            // Автоматически запускаем музыку
             music.play().catch(() => {});
         });
 
@@ -716,11 +725,6 @@
         // ===== КОНВЕРТ =====
         envelope.addEventListener("click", () => {
             letter.style.display = letter.style.display === "block" ? "none" : "block";
-        });
-
-        // ===== МУЗЫКА =====
-        musicBtn.addEventListener("click", () => {
-            music.play();
         });
 
         // ===== СЧЕТЧИК ДНЕЙ =====
