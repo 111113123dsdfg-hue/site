@@ -1,0 +1,483 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    background: #ffd6e8;
+    color: white;
+}
+
+.background {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #ff9ec9, #ffd6e8, #ffeef6);
+    z-index: -5;
+}
+
+/* ===== ГЛАВНЫЙ ЭКРАН ===== */
+.welcome {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    text-align: center;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(5px);
+}
+
+.welcome-content {
+    z-index: 2;
+}
+
+.welcome h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem;
+    text-shadow: 0 0 25px hotpink;
+}
+
+.buttons {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+button {
+    border: none;
+    border-radius: 40px;
+    padding: 18px 40px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: .4s;
+}
+
+#yesBtn {
+    background: #ff4da6;
+    color: white;
+    box-shadow: 0 0 25px hotpink;
+}
+
+#noBtn {
+    background: white;
+    color: #ff4da6;
+}
+
+button:hover {
+    transform: scale(1.08);
+}
+
+/* ===== ВТОРАЯ СТРАНИЦА ===== */
+#lovePage {
+    display: none;
+    padding: 40px 20px 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.title {
+    text-align: center;
+    font-family: 'Great Vibes', cursive;
+    font-size: 4rem;
+    text-shadow: 0 0 20px hotpink;
+}
+
+.daysTogether {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.3rem;
+}
+
+/* ===== ФРАЗЫ ===== */
+.phrase-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 30px 0;
+    flex-wrap: wrap;
+}
+
+.phrase-btn {
+    background: #ff4da6;
+    color: white;
+    padding: 14px 32px;
+    border-radius: 60px;
+    border: none;
+    font-size: 1.1rem;
+    box-shadow: 0 0 25px hotpink;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.phrase-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 40px hotpink;
+}
+
+/* ===== ИСПРАВЛЕННЫЙ БЛОК ДЛЯ ТЕКСТА ФРАЗ ===== */
+.phrase {
+    font-size: 1.5rem;
+    font-weight: 600;
+    padding: 16px 30px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 60px;
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    max-width: 550px;
+    justify-content: center;
+    color: #4a0024;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 25px rgba(255, 105, 180, 0.25);
+    line-height: 1.5;
+    text-shadow: 0 1px 4px rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.3px;
+}
+
+/* Дополнительно: тёмный текст на светлом фоне для читаемости */
+.phrase {
+    background: rgba(255, 240, 245, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: #3d001e;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+/* ===== ГАЛЕРЕЯ ===== */
+.gallery-container {
+    margin: 20px 0 40px;
+}
+
+/* Телефон — карусель */
+@media (max-width: 768px) {
+    .gallery {
+        position: relative;
+        width: 100%;
+        height: 60vh;
+        overflow: hidden;
+        border-radius: 30px;
+        box-shadow: 0 0 40px rgba(255, 105, 180, 0.7);
+    }
+
+    .slide {
+        display: none;
+        width: 100%;
+        height: 100%;
+    }
+
+    .slide.active {
+        display: block;
+    }
+
+    .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+/* ПК — сетка одинаковых фото */
+@media (min-width: 769px) {
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 30px;
+        box-shadow: 0 0 40px rgba(255, 105, 180, 0.3);
+    }
+
+    .slide {
+        display: block !important;
+        width: 100%;
+        height: 280px;
+        overflow: hidden;
+        border-radius: 20px;
+        transition: transform 0.3s, box-shadow 0.3s;
+        cursor: pointer;
+    }
+
+    .slide:hover {
+        transform: scale(1.03);
+        box-shadow: 0 0 30px hotpink;
+    }
+
+    .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+}
+
+/* ===== КОНВЕРТ ===== */
+.envelope {
+    margin: 40px auto 20px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    cursor: pointer;
+}
+
+.letter {
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto 30px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 25px;
+    border-radius: 25px;
+    display: none;
+}
+
+.letter h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.letter p {
+    line-height: 1.8;
+}
+
+/* ===== МУЗЫКА ===== */
+#musicBtn {
+    display: block;
+    margin: 30px auto;
+    background: #ff4da6;
+    color: white;
+}
+
+/* ===== НАВСЕГДА ===== */
+.forever {
+    text-align: center;
+    margin-top: 30px;
+}
+
+#foreverBtn {
+    background: white;
+    color: #ff4da6;
+    box-shadow: 0 0 30px hotpink;
+    font-size: 1.2rem;
+}
+
+/* ===== ПОЛНОЭКРАННЫЙ ПРОСМОТР ===== */
+#photoViewer {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn .5s;
+}
+
+#viewerImage {
+    width: 95%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 25px;
+    box-shadow: 0 0 50px hotpink;
+}
+
+#closePhoto {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* ===== ЛЕТАЮЩИЕ СЕРДЕЧКИ ===== */
+.heart {
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    pointer-events: none;
+    z-index: 999;
+    animation: heartFly linear forwards;
+}
+
+@keyframes heartFly {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-120vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* ===== ЛЕПЕСТКИ ===== */
+.petal {
+    position: fixed;
+    width: 15px;
+    height: 15px;
+    background: #ffb7c5;
+    border-radius: 70% 0 70% 0;
+    opacity: 0.8;
+    pointer-events: none;
+    animation: sakuraFall linear forwards;
+}
+
+@keyframes sakuraFall {
+    from {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0;
+    }
+    10% { opacity: 0.8; }
+    to {
+        transform: translateY(110vh) translateX(150px) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* ===== ЗВЕЗДЫ ===== */
+.star {
+    position: fixed;
+    width: 3px;
+    height: 3px;
+    background: white;
+    border-radius: 50%;
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0.2; }
+}
+
+/* ===== КОНФЕТТИ ===== */
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    z-index: 3000;
+    border-radius: 2px;
+    animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* ===== ФИНАЛЬНОЕ СЕРДЦЕ ===== */
+.finalHeart {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 182, 193, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 2000;
+    animation: fadeIn 1s;
+}
+
+.finalHeart h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 5rem;
+    text-shadow: 0 0 30px hotpink;
+}
+
+.finalHeart p {
+    margin-top: 30px;
+    font-size: 1.4rem;
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* ===== БОЛЬШОЕ СЕРДЦЕ (скрыто) ===== */
+.bigHeart {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* ===== АДАПТАЦИЯ ===== */
+@media (max-width: 768px) {
+    .welcome h1 {
+        font-size: 2.7rem;
+        padding: 0 15px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    button {
+        width: 180px;
+    }
+
+    .title {
+        font-size: 2.8rem;
+        padding: 0 15px;
+    }
+
+    .phrase-section {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .phrase {
+        font-size: 1.2rem;
+        font-weight: 600;
+        padding: 14px 20px;
+        min-height: 60px;
+        width: 100%;
+        max-width: 100%;
+        color: #3d001e;
+        background: rgba(255, 240, 245, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 2px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .phrase-btn {
+        font-size: 1rem;
+        padding: 12px 28px;
+    }
+
+    .daysTogether {
+        font-size: 1rem;
+    }
+
+    .letter {
+        width: 95%;
+    }
+}
